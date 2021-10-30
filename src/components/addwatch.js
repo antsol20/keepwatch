@@ -34,8 +34,6 @@ const Addwatch = () => {
                     </td>
                     <td></td>
                 </tr>
-
-
             </table>
         </>
     )
