@@ -17,27 +17,35 @@ function App() {
     }
 
     getWatches()
-  }, [])
+  })
 
   const apiauth = "Basic " + Constants.API_KEY;
 
   const fetchWatches = async () => {
-    const url = "https://cors-anywhere.herokuapp.com/https://keepwatch.page/api"
+    const url = "https://grim-castle-00942.herokuapp.com/https://keepwatch.page/api"
     const res = await fetch(url, { headers: { 'Authorization': apiauth } })
     const data = await res.json()
 
     return data
   }
 
+  const deleteWatch = (url) => {
+    console.log('delete..', url)
+  }
+
+  const addWatch = (watch) => {
+    console.log('add..', watch)
+  }
+
+
+
   return (
     <div className="App">
 
       <HeaderComp />
-      <Watchlist watches={watches} />
+      <Watchlist watches={watches} onDelete={deleteWatch} />
       <br></br>
-      <Addwatch />
-
-
+      <Addwatch onAdd={addWatch}/>
 
     </div>
   );

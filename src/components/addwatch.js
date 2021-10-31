@@ -1,7 +1,11 @@
 import React from 'react'
+import { useState } from 'react';
 
+const Addwatch = ({onAdd}) => {
 
-const Addwatch = () => {
+    const [descInput, setDescInput] = useState('');
+    const [siteInput, setSiteInput] = useState('');
+
     return (
         <>
             <table>
@@ -12,7 +16,7 @@ const Addwatch = () => {
                         </div>
                     </td>
                     <td>
-                        <input type="text"></input>
+                        <input value={descInput} onInput={e => setDescInput(e.target.value)} type="text"></input>
                     </td>
                 </tr>
                 <tr>
@@ -22,13 +26,13 @@ const Addwatch = () => {
                         </div>
                     </td>
                     <td>
-                        <input type="text"></input>
+                        <input value={siteInput} onInput={e => setSiteInput(e.target.value)} type="text"></input>
                     </td>
-                </tr>
+                </tr> 
 
                 <tr>
                     <td colSpan="2" rowSpan="2" align="left" style={{paddingTop: '20px'}}>
-                        <button style={{ marginLeft: '10px', width:'100px', textAlign:'center' }}>
+                        <button onClick={()=> onAdd({'Description': descInput, 'Site': siteInput})} style={{ marginLeft: '10px', width:'100px', textAlign:'center' }}>
                             Add
                         </button>
                     </td>
