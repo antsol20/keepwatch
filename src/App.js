@@ -20,7 +20,6 @@ function App() {
   }, [])
 
   const apiauth = "Basic " + Constants.API_KEY;
-  console.log(apiauth)
 
   const fetchWatches = async () => {
     const url = "https://cors-anywhere.herokuapp.com/https://keepwatch.page/api"
