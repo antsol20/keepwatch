@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import HeaderComp from './components/headcomp';
 import Watchlist from './components/watchlist';
 import Addwatch from './components/addwatch';
+import * as Constants from './constants';
 
 function App() {
 
@@ -18,10 +19,12 @@ function App() {
     getWatches()
   }, [])
 
+  const apiauth = "Basic " + Constants.API_KEY;
+  console.log(apiauth)
 
   const fetchWatches = async () => {
     const url = "https://cors-anywhere.herokuapp.com/https://keepwatch.page/api"
-    const res = await fetch(url, { headers: { 'Authorization': 'Basic YnVsbDpidWxsMTIz' } })
+    const res = await fetch(url, { headers: { 'Authorization': apiauth } })
     const data = await res.json()
 
     return data
@@ -31,7 +34,7 @@ function App() {
     <div className="App">
 
       <HeaderComp />
-      <Watchlist watches={watches}/>
+      <Watchlist watches={watches} />
       <br></br>
       <Addwatch />
 
