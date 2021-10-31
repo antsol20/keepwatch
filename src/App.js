@@ -20,23 +20,36 @@ function App() {
   })
 
   const apiauth = "Basic " + Constants.API_KEY;
+  const headers = { 'Authorization': apiauth }
 
   const fetchWatches = async () => {
-    const url = "https://grim-castle-00942.herokuapp.com/https://keepwatch.page/api"
-    const res = await fetch(url, { headers: { 'Authorization': apiauth } })
+    const url = Constants.API
+    const res = await fetch(url, { headers: headers })
     const data = await res.json()
 
     return data
   }
 
-  const deleteWatch = (url) => {
-    console.log('delete..', url)
+
+
+  const deleteWatch = async (url) => {
+
+    var answer = window.confirm("Confirm delete?");
+
+    if (answer) {
+      const data = { 'mode': 'delete', 'url': url, 'desc': 'desc' }
+
+      await fetch(Constants.API, { method: "POST", headers: headers, body: JSON.stringify(data) })
+    }
   }
 
-  const addWatch = (watch) => {
-    console.log('add..', watch)
-  }
+  const addWatch = async (watch) => {
 
+    const data = { 'mode': 'create', 'url': watch.Site, 'desc': watch.Description }
+
+    await fetch(Constants.API, { method: "POST", headers: headers, body: JSON.stringify(data) })
+
+  }
 
 
   return (
@@ -45,7 +58,7 @@ function App() {
       <HeaderComp />
       <Watchlist watches={watches} onDelete={deleteWatch} />
       <br></br>
-      <Addwatch onAdd={addWatch}/>
+      <Addwatch onAdd={addWatch} />
 
     </div>
   );

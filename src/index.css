@@ -62,7 +62,7 @@ button {
   font-size: large;
   text-align: left;
   display: grid;
-  grid-template-columns: 80px 2fr 1fr;
+  grid-template-columns: 1fr 3fr 1fr;
   gap: 0px;
   grid-auto-rows: minmax(60px, auto);
 }
