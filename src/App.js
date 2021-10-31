@@ -17,7 +17,7 @@ function App() {
     }
 
     getWatches()
-  })
+  } , [])
 
   const apiauth = "Basic " + Constants.API_KEY;
   const headers = { 'Authorization': apiauth }
