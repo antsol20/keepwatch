@@ -64,14 +64,16 @@ button {
   display: grid;
   grid-template-columns: 1fr 3fr 1fr;
   gap: 0px;
-  grid-auto-rows: minmax(60px, auto);
 }
 .one {
   grid-column: 1;
+  margin: 0.50em;
 }
 .two {
   grid-column: 2;
+  margin: 0.50em;
 }
 .three {
   grid-column: 3;
+  margin: 0.50em;
 }
