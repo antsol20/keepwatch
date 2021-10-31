@@ -4,7 +4,6 @@ import HeaderComp from './components/headcomp';
 import Watchlist from './components/watchlist';
 import Addwatch from './components/addwatch';
 import * as Constants from './constants';
-import { FaWizardsOfTheCoast } from 'react-icons/fa';
 
 function App() {
 
