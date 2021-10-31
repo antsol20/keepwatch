@@ -4,6 +4,7 @@ import HeaderComp from './components/headcomp';
 import Watchlist from './components/watchlist';
 import Addwatch from './components/addwatch';
 import * as Constants from './constants';
+import { FaWizardsOfTheCoast } from 'react-icons/fa';
 
 function App() {
 
@@ -40,15 +41,18 @@ function App() {
       const data = { 'mode': 'delete', 'url': url, 'desc': 'desc' }
 
       await fetch(Constants.API, { method: "POST", headers: headers, body: JSON.stringify(data) })
+    
+      setWatches(watches.filter((watch) => watch.Url !== url))
     }
   }
 
   const addWatch = async (watch) => {
 
-    const data = { 'mode': 'create', 'url': watch.Site, 'desc': watch.Description }
+    const data = { 'mode': 'create', 'url': watch.Url, 'desc': watch.Description }
 
     await fetch(Constants.API, { method: "POST", headers: headers, body: JSON.stringify(data) })
 
+     setWatches([...watches, watch])
   }
 
 
